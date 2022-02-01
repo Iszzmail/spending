@@ -5,35 +5,11 @@ function Table(props) {
   let district = [];
   let fdis = [];
 
-  //   props.filteredbydate &&
-  //     props.filteredbydate.forEach((data) => {
-  //       data.regional.forEach((regionalData) => {
-  //         if (obj[regionalData.loc]) {
-  //           obj[regionalData.loc].confirmedCasesForeign +=
-  //             regionalData.confirmedCasesForeign;
-  //           obj[regionalData.loc].confirmedCasesIndian +=
-  //             regionalData.confirmedCasesIndian;
-  //           obj[regionalData.loc].deaths += regionalData.deaths;
-  //           obj[regionalData.loc].discharged += regionalData.discharged;
-  //           obj[regionalData.loc].totalConfirmed += regionalData.totalConfirmed;
-  //         } else {
-  //           obj[regionalData.loc] = {
-  //             ...regionalData,
-  //           };
-  //         }
-  //       });
-  //     });
-  //   console.log(obj);
-  props.filteredbydate &&
-    props.filteredbydate.map((e) => {
-      return e.regional.map((x) => {
-        if (!district.includes(x.loc)) {
-          district.push(x.loc);
-        }
-      });
-    });
+  props.filteredbydate&& props.filteredbydate.map((e)=>{
+    district.push(e)
+  })
 
-  
+
   console.log(district);
   console.log(fdis);
 
