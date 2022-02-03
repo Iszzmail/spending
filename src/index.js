@@ -1,17 +1,34 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { useCallback, useEffect, useState } from "react";
+import ReactDOM from "react-dom";
+import Data from "./data";
+import Table from "./table";
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+function Index() {
+  const [data, Setdata] = useState();
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+  
+
+  const getDataFromChild = (childdata) => {
+    Setdata(childdata.rates);
+  };
+
+//   const filter = () => {
+   
+//     Setdata(coinsData);
+//     // keys = Object.keys(data[0])
+//     console.log(keys)
+//   };
+
+
+  return (
+    <div>
+      <button >Click</button>
+      <Data getdata={getDataFromChild} />
+      <Table data={data} />
+    </div>
+  );
+}
+
+ReactDOM.render(<Index />, document.querySelector("#root"));
+
+export default Index;

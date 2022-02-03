@@ -1,40 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
 import "./style.css";
 
-function Table(props) {
-  let district = [];
-  let fdis = [];
+function Table({ data }) {
+  let d = data && Object.keys(data);
+  console.log(d && data[d[0]]);
 
-  props.filteredbydate&& props.filteredbydate.map((e)=>{
-    district.push(e)
-  })
+ 
+  return (
+    <div>
+      <table>
+        <thead>
+        <tr>
+          {Object.keys(data[d[0]]).map((e,i) => 
+          <>
+          <th>{e}</th>
+          </>
+          )}
+          <th>Code</th>
+          </tr>
+        </thead>
 
-
-  console.log(district);
-  console.log(fdis);
-
-  return <div>ji</div>;
+        {data &&
+          Object.keys(data).map((e, i) => {
+            return (
+              <tbody>
+                <tr>
+                  
+                  <td>{data[e].name}</td>
+                  <td>{data[e].unit}</td>
+                  <td>{data[e].value}</td>
+                  <td>{data[e].type}</td>
+                  <td>{e}</td>
+                </tr>
+              </tbody>
+            );
+          })}
+      </table>
+    </div>
+  );
 }
 
 export default Table;
-
-{
-  /* {JSON.stringify(props.filteredbydate)} */
-}
-{
-  /* <table>
-        <tr>
-          <th>Name</th>
-          <th>Total</th>
-          <th>Active</th>
-          <th>Discharged</th>
-          <th>Death</th>
-        </tr>
-        {/* <tr>
-          <td>{obj.loc}</td>
-          <td>{obj.totalConfirmed}</td>
-          <td>{obj.confirmedCasesIndian}</td>
-          <td>{obj.discharged}</td>
-          <td>{obj.deaths}</td>
-    </tr> */
-}
